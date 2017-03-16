@@ -1,4 +1,3 @@
-require "server_health_check"
 require "server_health_check_rack/version"
 
 module ServerHealthCheckRack
