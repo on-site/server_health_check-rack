@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'server_health_check/rack/version'
+require 'server_health_check_rack/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "server_health_check-rack"
-  spec.version       = ServerHealthCheck::Rack::VERSION
+  spec.version       = ServerHealthCheckRack::VERSION
   spec.authors       = ["Mike Virata-Stone"]
   spec.email         = ["mjstone@on-site.com"]
 
