@@ -3,6 +3,8 @@ require "set"
 module ServerHealthCheckRack
   class Checks
     class << self
+      attr_accessor :logger
+
       def all_checks
         raise ArgumentError, "Please configure server_health_check-rails!" if @checks.nil?
         @checks.keys
