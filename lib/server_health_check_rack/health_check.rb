@@ -1,7 +1,7 @@
 module ServerHealthCheckRack
   class HealthCheck
     def initialize(*checks)
-      @check = ServerHealthCheck.new(logger: ServerHealthCheckRack::Checks.logger)
+      @check = ServerHealthCheck.new(logger: ServerHealthCheckRack::Config.logger)
       ServerHealthCheckRack::Checks.apply_checks(@check, checks)
     end
 
