@@ -1,3 +1,6 @@
+require "server_health_check"
+require "json"
+
 module ServerHealthCheckRack
   class HealthCheck
     def initialize(*checks)
@@ -21,6 +24,10 @@ module ServerHealthCheckRack
       {
         status: @check.results
       }
+    end
+
+    def to_json
+      to_h.to_json
     end
   end
 end

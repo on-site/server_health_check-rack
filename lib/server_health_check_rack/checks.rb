@@ -4,12 +4,12 @@ module ServerHealthCheckRack
   class Checks
     class << self
       def all_checks
-        raise ArgumentError, "Please configure server_health_check-rails!" if @checks.nil?
+        raise ArgumentError, "Please configure server_health_check-rack!" if @checks.nil?
         @checks.keys
       end
 
       def apply_checks(server_health_check, checks)
-        raise ArgumentError, "Please configure server_health_check-rails!" if @checks.nil?
+        raise ArgumentError, "Please configure server_health_check-rack!" if @checks.nil?
         checks = Set.new(checks)
 
         @checks.each do |name, check|
