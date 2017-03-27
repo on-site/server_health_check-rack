@@ -5,7 +5,7 @@ module ServerHealthCheckRack
 
       def path=(value)
         @path = value
-        @path.sub!(/\/$/, "") if @path
+        @path.sub!(/\/\z/, "") if @path
       end
 
       def path
@@ -14,15 +14,15 @@ module ServerHealthCheckRack
 
       def path?(rack_path_info)
         return false unless rack_path_info.start_with?(path)
-        rack_path_info =~ /#{Regexp.quote(path)}(?:[\/?]|$)/
+        rack_path_info =~ /\A#{Regexp.quote(path)}(?:[\/?]|\z)/
       end
 
       def path_to_health_checks(rack_path_info)
         raise ArgumentError, "Invalid health check path: #{rack_path_info}" unless path?(rack_path_info)
         rack_path_info = rack_path_info.sub(/\?.*/, "")
-        rack_path_info.sub!(/\/$/, "")
+        rack_path_info.sub!(/\/\z/, "")
         return :all if rack_path_info == path
-        [rack_path_info[/\/([^\/]*)$/, 1]]
+        [rack_path_info[/\/([^\/]*)\z/, 1]]
       end
     end
   end

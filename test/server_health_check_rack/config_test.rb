@@ -28,6 +28,7 @@ class ServerHealthCheckRack::ConfigTest < Minitest::Test
     refute ServerHealthCheckRack::Config.path?("/health_check")
     refute ServerHealthCheckRack::Config.path?("/nested/health")
     refute ServerHealthCheckRack::Config.path?("/health_check/")
+    refute ServerHealthCheckRack::Config.path?("/health_check/health")
   end
 
   def test_path_with_nested_path
@@ -65,6 +66,7 @@ class ServerHealthCheckRack::ConfigTest < Minitest::Test
     refute ServerHealthCheckRack::Config.path?("/check_health")
     refute ServerHealthCheckRack::Config.path?("/check_health/")
     refute ServerHealthCheckRack::Config.path?("/check_health?query=string")
+    refute ServerHealthCheckRack::Config.path?("/check_health/check")
   end
 
   def test_path_with_nested_customized_path
@@ -78,6 +80,7 @@ class ServerHealthCheckRack::ConfigTest < Minitest::Test
     refute ServerHealthCheckRack::Config.path?("/some/nested/check")
     refute ServerHealthCheckRack::Config.path?("/check_health")
     refute ServerHealthCheckRack::Config.path?("/nested/check_health/")
+    refute ServerHealthCheckRack::Config.path?("/nested/check_health/nested/check")
   end
 
   def test_path_to_health_checks_with_root_path

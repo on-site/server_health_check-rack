@@ -28,7 +28,7 @@ ServerHealthCheckRack::Checks.check_redis!(host: "someredis.host", port: 1234)
 ServerHealthCheckRack::Checks.check_aws_s3!("aws-bucket-to-check")
 ServerHealthCheckRack::Checks.check_aws_creds!
 ServerHealthCheckRack::Checks.check "custom_check" do
-  # Do some work here, then return true if it succeeded for false if not
+  # Do some work here, then return true if it succeeded or false if not
   # (exceptions will be caught by the server_health_check gem and the message
   # will be reported as the status).
   true
